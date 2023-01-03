@@ -14,7 +14,7 @@
   (host-name "guix-xps")
   (timezone "America/Los_Angeles")
   (locale "en_US.utf8")
-  (keyboard-layout ctrl-nocaps)
+  (keyboard-layout "us" #:options '("ctrl:nocaps"))
   (kernel linux)
   (initrd microcode-initrd)
   (firmware (list linux-firmware))
@@ -24,7 +24,8 @@
   ;; Partition mounted on /boot/efi.
   (bootloader (bootloader-configuration
                 (bootloader grub-efi-bootloader)
-                (targets '("/boot/efi"))))
+                (targets '("/boot/efi"))
+                (keyboard-layout keyboard-layout)))
 
   (swap-devices
    (list (swap-space
