@@ -26,6 +26,11 @@
                 (bootloader grub-efi-bootloader)
                 (targets '("/boot/efi"))))
 
+  (swap-devices
+   (list (swap-space
+          (target
+           (uuid "31d7832e-e12f-436c-b985-5b1f63b9ae1a")))))
+
   ;; It's fitting to support the equally bare bones ‘-nographic’
   ;; QEMU option, which also nicely sidesteps forcing QWERTY.
   ;; (kernel-arguments (list "console=ttyS0,115200"))
