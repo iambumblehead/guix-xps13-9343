@@ -10,7 +10,7 @@
 
 (operating-system
   (host-name "guix-xps")
-  (timezone "US/Pacific")
+  (timezone "America/Los_Angeles")
   (locale "en_US.utf8")
   (kernel linux)
   (initrd microcode-initrd)
