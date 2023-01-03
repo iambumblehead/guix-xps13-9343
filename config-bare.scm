@@ -15,7 +15,7 @@
   (kernel linux)
   (initrd microcode-initrd)
   (firmware (list linux-firmware))
-  (initrd-modules (list "e1000e" "i915" %base-initrd-modules))
+  (initrd-modules (cons "i915" %base-initrd-modules))
 
   ;; Use the UEFI variant of GRUB with the EFI System
   ;; Partition mounted on /boot/efi.
