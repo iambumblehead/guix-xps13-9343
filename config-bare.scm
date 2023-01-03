@@ -41,7 +41,7 @@
                          (mount-point "/")
                          (type "ext4"))
                        (file-system
-                         (device (uuid "2EBD-CDBC" 'fat))
+                         (device (uuid "2EBD-CDBC" 'fat32))
                          (mount-point "/boot/efi")
                          (type "vfat")))
                  %base-file-systems))
