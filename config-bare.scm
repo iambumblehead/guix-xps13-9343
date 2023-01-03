@@ -32,7 +32,7 @@
                          (mount-point "/")
                          (type "ext4"))
                        (file-system
-                         (device (uuid "1234-ABCD" 'fat))
+                         (device (uuid "28FD-9D34" 'fat))
                          (mount-point "/boot/efi")
                          (type "vfat")))
                  %base-file-systems))
