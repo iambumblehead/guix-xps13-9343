@@ -24,7 +24,7 @@
   ;; Partition mounted on /boot/efi.
   (bootloader (bootloader-configuration
                 (bootloader grub-efi-bootloader)
-                (targets '("/boot/efi"))
+                (targets (list "/boot/efi"))
                 (keyboard-layout keyboard-layout)))
 
   (swap-devices
@@ -41,7 +41,7 @@
                          (mount-point "/")
                          (type "ext4"))
                        (file-system
-                         (device (uuid "28FD-9D34" 'fat))
+                         (device (uuid "2EBD-CDBC" 'fat))
                          (mount-point "/boot/efi")
                          (type "vfat")))
                  %base-file-systems))
