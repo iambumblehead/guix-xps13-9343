@@ -29,8 +29,8 @@
 
   (swap-devices
    (list (swap-space
-          (target
-           (uuid "31d7832e-e12f-436c-b985-5b1f63b9ae1a")))))
+          (target (file-system-label "my-swap"))
+          (dependencies mapped-devices))))
 
   ;; It's fitting to support the equally bare bones ‘-nographic’
   ;; QEMU option, which also nicely sidesteps forcing QWERTY.
