@@ -14,7 +14,7 @@
   (host-name "guix-xps")
   (timezone "America/Los_Angeles")
   (locale "en_US.utf8")
-  (keyboard-layout "us" #:options '("ctrl:nocaps"))
+  (keyboard-layout (keyboard-layout "us" #:options '("ctrl:nocaps")))
   (kernel linux)
   (initrd microcode-initrd)
   (firmware (list linux-firmware))
