@@ -1,6 +1,8 @@
 ;; This is an operating system configuration template
 ;; for a "bare bones" setup, with no X11 display server.
 
+
+;; why texlive (hundreds) python, gdk-pixbuf
 (use-modules (gnu)
              (nongnu packages linux)
              (nongnu system linux-initrd))
@@ -12,6 +14,7 @@
   (host-name "guix-xps")
   (timezone "America/Los_Angeles")
   (locale "en_US.utf8")
+  (keyboard-layout ctrl-nocaps)
   (kernel linux)
   (initrd microcode-initrd)
   (firmware (list linux-firmware))
