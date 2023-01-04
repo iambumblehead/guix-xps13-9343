@@ -40,7 +40,7 @@ mkdir -p /mnt/home
 ```
 
 Begin installation, initialize non-free channels
-``` console
+```console
 herd start cow-store /mnt
 git clone https://github.com/iambumblehead/guix-xps13-9343
 mkdir -p ~/.config/guix
@@ -49,11 +49,24 @@ guix pull # takes a long time
 hash guix
 ```
 
-Install system config-bare. A small environment is defined with an operational wifi setup. After reboot, one can incrementally update guix home to complete the rest of system.  [gnu manual](https://guix.gnu.org/manual/en/html_node/Proceeding-with-the-Installation.html)
-``` console
+Install system config-bare. A small environment is defined with an operational wifi setup. After reboot, one can incrementally update guix home to complete the rest of system. Includes git, emacs and networking tools  [gnu manual][4]
+```console
 mkdir /mnt/etc
 cp guix-xps13-9343/config-bare.scm /mnt/etc/config.scm
 emacs -nw /mnt/etc/config.scm # edit root mount point uuid
 guix system init /mnt/etc/config.scm /mnt
 reboot
 ```
+
+Use the not-root user to run guix reconfigure and guix pull  [gnu manual][5]
+```console
+# Set the password for your root account
+passwd
+# Set the password for your user
+passwd <your username>
+# Logout and back in
+exit
+```
+
+[4]: https://guix.gnu.org/manual/en/html_node/Proceeding-with-the-Installation.html
+[5]: https://guix.gnu.org/en/manual/en/html_node/After-System-Installation.html#After-System-Installation
