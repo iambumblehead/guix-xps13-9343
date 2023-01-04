@@ -10,7 +10,6 @@ assumes two things,
     * /dev/sda3 ext4 my-root
 
 
-Setup a network connection.
 
 _wifi.config_
 ```console
@@ -21,6 +20,7 @@ network={
 }
 ```
 
+Setup a network connection.
 ```console
 rfkill unblock all
 ifconfig -a
@@ -28,7 +28,7 @@ wpa_supplicant -c wifi.conf -i wlan0 -B
 dhclient -v wlan0
 ```
 
-Format "root" and "swap" with labels, then mount them. The root label allows guix configuration to mount by label rather than random UUID. (should investigated if this can be done with swap)
+Format and label "root" and "swap". Mount them. The config will mount root using the label, rather than UUID. (todo: investigate if this can be done with swap)
 ```console
 mkfs.ext4 -L my-root /dev/sda3
 mount LABEL=my-root /mnt
@@ -37,7 +37,6 @@ mount /dev/sda1 /mnt/boot/efi
 mkswap -L my-swap /dev/sda2
 swapon /dev/sda2
 mkdir -p /mnt/home
-
 ```
 
 Begin installation, initialize non-free channels
@@ -50,10 +49,11 @@ guix pull # takes a long time
 hash guix
 ```
 
-Install system config-bare. This will define a small environment that boots with an operational wifi setup and the user (you) can incrementally add guix home coniguration to complete the rest of system.  [gnu manual](https://guix.gnu.org/manual/en/html_node/Proceeding-with-the-Installation.html)
+Install system config-bare. A small environment is defined with an operational wifi setup. After reboot, one can incrementally update guix home to complete the rest of system.  [gnu manual](https://guix.gnu.org/manual/en/html_node/Proceeding-with-the-Installation.html)
 ``` console
 mkdir /mnt/etc
 cp guix-xps13-9343/config-bare.scm /mnt/etc/config.scm
 emacs -nw /mnt/etc/config.scm # edit root mount point uuid
 guix system init /mnt/etc/config.scm /mnt
+reboot
 ```

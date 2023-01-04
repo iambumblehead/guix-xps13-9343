@@ -8,7 +8,7 @@
              (nongnu system linux-initrd))
 
 (use-service-modules networking ssh)
-(use-package-modules bootloaders certs emacs screen ssh)
+(use-package-modules bootloaders certs emacs git screen ssh)
 
 (operating-system
   (host-name "guix-xps")
@@ -71,21 +71,10 @@
   ;; Add services to the baseline: a DHCP client and
   ;; an SSH server.
   (services (append (list (service dhcp-client-service-type)
+                          (service network-manager-service-type)
+                          (service wpa-supplicant-service-type)
                           (service openssh-service-type
                                    (openssh-configuration
                                     (openssh openssh-sans-x)
                                     (port-number 2222))))
-                    ;;(modify-services %desktop-services
-		    		     ;;(gdm-service-type config => (gdm-configuration
-				     ;;                   (inherit config)
-	                             ;;                   (wayland? #t)))
-                                     ;;
-                                     ;;(guix-service-type config => (guix-configuration
-                                     ;;                              (inherit config)
-                                     ;;                              (substitute-urls
-                                     ;;                               (append (list "https://substitutes.nonguix.org")
-                                     ;;                                       %default-substitute-urls))
-                                     ;;                              (authorized-keys
-                                     ;;                               (append (list (local-file "./signing-key.pub"))
-                                     ;;                                       %default-authorized-guix-keys)))))
                     %base-services)))
