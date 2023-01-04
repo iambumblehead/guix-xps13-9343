@@ -28,9 +28,8 @@
                 (keyboard-layout keyboard-layout)))
 
   (swap-devices
-   (list (swap-space
-          (target (file-system-label "my-swap"))
-          (dependencies mapped-devices))))
+   (list
+    (swap-space (target (uuid "5b7826f3-fd1f-4b7d-a12b-9c5cabbf0087")))))
 
   ;; It's fitting to support the equally bare bones ‘-nographic’
   ;; QEMU option, which also nicely sidesteps forcing QWERTY.
@@ -76,4 +75,17 @@
                                    (openssh-configuration
                                     (openssh openssh-sans-x)
                                     (port-number 2222))))
+                    ;;(modify-services %desktop-services
+		    		     ;;(gdm-service-type config => (gdm-configuration
+				     ;;                   (inherit config)
+	                             ;;                   (wayland? #t)))
+                                     ;;
+                                     ;;(guix-service-type config => (guix-configuration
+                                     ;;                              (inherit config)
+                                     ;;                              (substitute-urls
+                                     ;;                               (append (list "https://substitutes.nonguix.org")
+                                     ;;                                       %default-substitute-urls))
+                                     ;;                              (authorized-keys
+                                     ;;                               (append (list (local-file "./signing-key.pub"))
+                                     ;;                                       %default-authorized-guix-keys)))))
                     %base-services)))
