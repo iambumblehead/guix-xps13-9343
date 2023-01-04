@@ -12,7 +12,7 @@ assumes two things,
 
 
 _wifi.config_
-```console
+```ruby
 network={
   ssid="ssid-name"
   key_mgmt=WPA-PSK
@@ -59,7 +59,7 @@ reboot
 ```
 
 Use the not-root user to run guix reconfigure and guix pull  [gnu manual][5]
-```console
+```bash
 # Set the password for your root account
 passwd
 # Set the password for your user
