@@ -1,11 +1,11 @@
 ![guix](https://upload.wikimedia.org/wikipedia/commons/8/81/Guix_logo.svg)
 
-A guide to setting up guix on an xps13 9343, generic enough to be used for other machines. Only one xps13-specific thing is here and it is safe to load that thing anywhere --an i915 kernel module defined in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, and does not demonstrate the nonguix vanilla linux kernel used by this guide.
+**A guide to setting up guix on an xps13 9343, generic enough to be used for other machines.** Only one xps13-specific thing is here, and it is safe to load that thing anywhere --an i915 kernel module defined in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, and does not demonstrate the nonguix vanilla linux kernel used by this guide.
 
 When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet. Use these to continue setting up a system you prefer, probably using [guix home.][6] Needed configuration files are stored with this guide.
 
 This guide assumes you have,
- 1. **A guix iso with non-free drivers** and iwlwifi kernel module, [link][0]
+ 1. **A guix iso with non-free drivers** and [iwlwifi][7] kernel module, [link][0]
  2. **A pre-existing disk partition** with swap, efi and root
     * /dev/sda1 efi
     * /dev/sda2 swap my-swap
@@ -73,3 +73,4 @@ guix pull
 [4]: https://guix.gnu.org/manual/en/html_node/Proceeding-with-the-Installation.html
 [5]: https://guix.gnu.org/en/manual/en/html_node/After-System-Installation.html#After-System-Installation
 [6]: https://guix.gnu.org/manual/devel/en/html_node/Home-Configuration.html
+[7]: https://wiki.gentoo.org/wiki/Iwlwifi
