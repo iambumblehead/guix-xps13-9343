@@ -11,7 +11,6 @@ This guide assumes you have,
     * _/dev/sda2 swap my-swap_
     * _/dev/sda3 ext4 my-root_
 
-
 _wifi.config_
 ```ruby
 network={
@@ -40,7 +39,7 @@ swapon /dev/sda2
 mkdir -p /mnt/home
 ```
 
-Begin installation, pulling non-free channels
+Begin installation, pulling non-free channels. Unfortunately, it is not un-common for pull to fail with "cannot build derivation" errors. Wait a few days for bugs to be reported and fixed upstream.
 ```console
 herd start cow-store /mnt
 git clone https://github.com/iambumblehead/guix-xps13-9343
@@ -60,7 +59,7 @@ reboot
 ```
 
 Setup root and not-root users to run guix pull and reconfigure, [as recommended by gnu,][5]
-```bash
+```cosnole
 passwd # root
 passwd <your username> # non-root
 exit # logout and back in
