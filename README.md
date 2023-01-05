@@ -39,7 +39,7 @@ swapon /dev/sda2
 mkdir -p /mnt/home
 ```
 
-Begin installation, pulling non-free channels. Unfortunately, it is not un-common for pull to fail with "cannot build derivation" errors. Wait a few days for bugs to be reported and fixed upstream.
+Begin installation, pulling non-free channels. Unfortunately, it is not un-common for pull to fail with "cannot build derivation" errors. Open an issue at the upstream affected channel or wait a few days with fingers crossed and try again.
 ```console
 herd start cow-store /mnt
 git clone https://github.com/iambumblehead/guix-xps13-9343
@@ -49,7 +49,7 @@ guix pull # takes a long time
 hash guix
 ```
 
-Install system config-bare.scm. A small environment is defined with operational wifi, git and emacs  [gnu manual][4]
+Install the config-bare.scm small environment with operational wifi, git and emacs  [gnu manual][4]
 ```console
 mkdir /mnt/etc
 cp guix-xps13-9343/config-bare.scm /mnt/etc/config.scm
