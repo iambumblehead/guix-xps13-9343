@@ -59,7 +59,7 @@ reboot
 ```
 
 Setup root and not-root users to run guix pull and reconfigure, [as recommended by gnu,][5]
-```cosnole
+```console
 passwd # root
 passwd <your username> # non-root
 exit # logout and back in
