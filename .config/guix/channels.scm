@@ -1,4 +1,7 @@
-; guix and nonguix channels are pinned to compatible commit version
+;; guix and nonguix channels are pinned to compatible commit/tag versions
+;;
+;; %default-channels also defines a channel named "guix", but using master branch,
+;; Only "our" guix channel is used, as it appears first in the list.
 (append (list
          (channel
           (name 'guix)
