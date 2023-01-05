@@ -1,8 +1,6 @@
 ;; This is an operating system configuration template
-;; for a "bare bones" setup, with no X11 display server.
+;; for a "bare bones" setup, w/ no display server.
 
-
-;; why texlive (hundreds) python, gdk-pixbuf
 (use-modules (gnu)
              (nongnu packages linux)
              (nongnu system linux-initrd))

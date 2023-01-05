@@ -55,6 +55,7 @@ mkdir /mnt/etc
 cp guix-xps13-9343/config-bare.scm /mnt/etc/config.scm
 emacs -nw /mnt/etc/config.scm # edit root mount point uuid
 guix system init /mnt/etc/config.scm /mnt
+cp /etc/channels.scm /mnt/home/
 reboot
 ```
 
@@ -63,6 +64,7 @@ Setup root and not-root users to run guix pull and reconfigure, [as recommended 
 passwd # root
 passwd <your username> # non-root
 exit # logout and back in
+cat /home/channels.scm > ~/.config/guix/channels.scm
 guix pull
 ```
 
