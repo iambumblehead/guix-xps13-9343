@@ -2,7 +2,7 @@
 
 **A guide to setting up guix on an xps13 9343, generic enough to be used for other machines.** Only one xps13-specific thing is here, and it is safe to load that thing anywhere —the i915 kernel module referenced in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, updated and covered here.
 
-**When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet.** Use these to continue setting up a system you prefer, probably using [guix home.][6]
+**When steps are completed to success, the machine boots a minimal environment with emacs and networking tools to enable wifi and ethernet.** Use these to continue setting up a system you prefer, probably using [guix home.][6]
 
 This guide assumes you have,
  1. [A guix iso][0] with [non-free][9] drivers and [iwlwifi][7] kernel module,
@@ -39,7 +39,7 @@ swapon /dev/sda2
 mkdir -p /mnt/home
 ```
 
-Begin installation, pulling non-free channels. Unfortunately, it is not un-common for pull to fail with "cannot build derivation" errors. Open an issue at the upstream affected channel or wait a few days with fingers crossed and try again.
+Begin installation, pulling non-free channels.
 ```console
 herd start cow-store /mnt
 git clone https://github.com/iambumblehead/guix-xps13-9343
@@ -49,7 +49,7 @@ guix pull # takes a long time
 hash guix
 ```
 
-Install the config-bare.scm small environment with operational wifi, git and emacs  [gnu manual][4]
+Install the config-bare.scm small environment with operational wifi and emacs  [gnu manual][4]
 ```console
 mkdir /mnt/etc
 cp guix-xps13-9343/config-bare.scm /mnt/etc/config.scm

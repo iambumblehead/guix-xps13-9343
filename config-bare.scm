@@ -8,7 +8,7 @@
              (nongnu system linux-initrd))
 
 (use-service-modules networking ssh)
-(use-package-modules bootloaders certs emacs git screen ssh)
+(use-package-modules bootloaders certs emacs screen ssh)
 
 (operating-system
   (host-name "guix-xps")
@@ -71,7 +71,6 @@
   ;; Add services to the baseline: a DHCP client and
   ;; an SSH server.
   (services (append (list (service dhcp-client-service-type)
-                          (service network-manager-service-type)
                           (service wpa-supplicant-service-type)
                           (service openssh-service-type
                                    (openssh-configuration
