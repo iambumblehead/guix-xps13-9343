@@ -1,12 +1,12 @@
 ![guix](https://upload.wikimedia.org/wikipedia/commons/8/81/Guix_logo.svg)
 
-**A guide to setting up guix on an xps13 9343, generic enough to be used for other machines.** Only one xps13-specific thing is here, and it is safe to load that thing anywhere --an i915 kernel module defined in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, and does not demonstrate the nonguix vanilla linux kernel used by this guide.
+**A guide to setting up guix on an xps13 9343, generic enough to be used for other machines.** Only one xps13-specific thing is here, and it is safe to load that thing anywhere --an i915 kernel module defined in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, and does not demonstrate the [nonguix][9] vanilla linux kernel used by this guide.
 
 **When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet.** Use these to continue setting up a system you prefer, probably using [guix home.][6] Needed configuration files are stored with this guide.
 
 This guide assumes you have,
- 1. A guix iso with non-free drivers and [iwlwifi][7] kernel module, [link][0]
- 2. A pre-existing disk partition with swap, efi and root
+ 1. [A guix iso][0] with non-free drivers and [iwlwifi][7] kernel module,
+ 2. A pre-existing disk partition with swap, efi and root. [Create these yourself,][8] or run guix's guided-install once to create them. The guided-install does not install non-free kernel and wifi drivers needed by xps13, but shell-install outlined here provides them.
     * _/dev/sda1 efi_
     * _/dev/sda2 swap my-swap_
     * _/dev/sda3 ext4 my-root_
@@ -73,3 +73,5 @@ guix pull
 [5]: https://guix.gnu.org/en/manual/en/html_node/After-System-Installation.html#After-System-Installation
 [6]: https://guix.gnu.org/manual/devel/en/html_node/Home-Configuration.html
 [7]: https://wiki.gentoo.org/wiki/Iwlwifi
+[8]: https://guix.gnu.org/manual/en/html_node/Keyboard-Layout-and-Networking-and-Partitioning.html#Disk-Partitioning
+[9]: https://gitlab.com/nonguix/nonguix
