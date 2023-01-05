@@ -2,7 +2,7 @@
 
 **A guide to setting up guix on an xps13 9343, generic enough to be used for other machines.** Only one xps13-specific thing is here, and it is safe to load that thing anywhere —the i915 kernel module referenced in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, and does not demonstrate the [nonguix][9] vanilla linux kernel used by this guide.
 
-**When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet.** Use these to continue setting up a system you prefer, probably using [guix home.][6] Needed configuration files are stored with this guide.
+**When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet.** Use these to continue setting up a system you prefer, probably using [guix home.][6]
 
 This guide assumes you have,
  1. [A guix iso][0] with non-free drivers and [iwlwifi][7] kernel module,
