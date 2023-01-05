@@ -2,14 +2,14 @@
 
 **A guide to setting up guix on an xps13 9343, generic enough to be used for other machines.** Only one xps13-specific thing is here, and it is safe to load that thing anywhere --an i915 kernel module defined in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, and does not demonstrate the nonguix vanilla linux kernel used by this guide.
 
-When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet. Use these to continue setting up a system you prefer, probably using [guix home.][6] Needed configuration files are stored with this guide.
+**When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet.** Use these to continue setting up a system you prefer, probably using [guix home.][6] Needed configuration files are stored with this guide.
 
 This guide assumes you have,
- 1. **A guix iso with non-free drivers** and [iwlwifi][7] kernel module, [link][0]
- 2. **A pre-existing disk partition** with swap, efi and root
-    * /dev/sda1 efi
-    * /dev/sda2 swap my-swap
-    * /dev/sda3 ext4 my-root
+ 1. A guix iso with non-free drivers and [iwlwifi][7] kernel module, [link][0]
+ 2. A pre-existing disk partition with swap, efi and root
+    * _/dev/sda1 efi_
+    * _/dev/sda2 swap my-swap_
+    * _/dev/sda3 ext4 my-root_
 
 
 _wifi.config_
@@ -29,7 +29,7 @@ wpa_supplicant -c wifi.conf -i wlan0 -B
 dhclient -v wlan0
 ```
 
-Format and label "root" and "swap". Mount them. The config will mount root using the label, rather than UUID. (todo: investigate if this can be done with swap)
+Format and label "root" and "swap". Mount them. The config will mount root using the label, rather than UUID. (todo: investigate if this can be done with swap as well)
 ```console
 mkfs.ext4 -L my-root /dev/sda3
 mount LABEL=my-root /mnt
@@ -40,7 +40,7 @@ swapon /dev/sda2
 mkdir -p /mnt/home
 ```
 
-Begin installation, initialize non-free channels
+Begin installation, pulling non-free channels
 ```console
 herd start cow-store /mnt
 git clone https://github.com/iambumblehead/guix-xps13-9343
@@ -50,7 +50,7 @@ guix pull # takes a long time
 hash guix
 ```
 
-Install system config-bare. A small environment is defined with an operational wifi setup. After reboot, one can incrementally update guix home to complete the rest of system. Includes git, emacs and networking tools  [gnu manual][4]
+Install system config-bare.scm. A small environment is defined with operational wifi, git and emacs  [gnu manual][4]
 ```console
 mkdir /mnt/etc
 cp guix-xps13-9343/config-bare.scm /mnt/etc/config.scm
