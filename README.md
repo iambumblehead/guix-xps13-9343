@@ -21,7 +21,7 @@ network={
 }
 ```
 
-Setup a network connection.
+Boot from the iso. Select locale, language and shell install option. Setup a network connection.
 ```console
 rfkill unblock all
 ifconfig -a # list networking devices
