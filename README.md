@@ -1,14 +1,15 @@
 ![guix](https://upload.wikimedia.org/wikipedia/commons/8/81/Guix_logo.svg)
 
-scheme scm configuration files for guix and the xps13 9343
+A guide to setting up guix on an xps13 9343, generic enough to be used for other machines. Only one xps13-specific thing is here and it is safe to load that thing anywhere --an i915 kernel module defined in config.scm. This guide credits and follows [steps outlined][1] by [David Wilson][2] of systemcrafters. The systemcrafters guide has a few outdated and missing areas, and does not demonstrate the nonguix vanilla linux kernel used by this guide.
 
-assumes two things,
- 1. **a guix iso with non-free drivers** and iwlwifi kernel module
- 2. **a pre-existing disk partition** with swap, efi and root
+When steps are completed to success, the machine boots a minimal environment with git, emacs and networking tools that enable wifi and ethernet. Use these to continue setting up a system you prefer, probably using [guix home.][6] Needed configuration files are stored with this guide.
+
+This guide assumes you have,
+ 1. **A guix iso with non-free drivers** and iwlwifi kernel module, [link][0]
+ 2. **A pre-existing disk partition** with swap, efi and root
     * /dev/sda1 efi
     * /dev/sda2 swap my-swap
     * /dev/sda3 ext4 my-root
-
 
 
 _wifi.config_
@@ -23,7 +24,7 @@ network={
 Setup a network connection.
 ```console
 rfkill unblock all
-ifconfig -a
+ifconfig -a # list networking devices
 wpa_supplicant -c wifi.conf -i wlan0 -B
 dhclient -v wlan0
 ```
@@ -58,15 +59,17 @@ guix system init /mnt/etc/config.scm /mnt
 reboot
 ```
 
-Use the not-root user to run guix reconfigure and guix pull  [gnu manual][5]
+Setup root and not-root users to run guix pull and reconfigure, [as recommended by gnu,][5]
 ```bash
-# Set the password for your root account
-passwd
-# Set the password for your user
-passwd <your username>
-# Logout and back in
-exit
+passwd # root
+passwd <your username> # non-root
+exit # logout and back in
+guix pull
 ```
 
+[0]: https://github.com/SystemCrafters/guix-installer/releases/latest
+[1]: https://wiki.systemcrafters.cc/guix/nonguix-installation-guide
+[2]: https://github.com/daviwil/
 [4]: https://guix.gnu.org/manual/en/html_node/Proceeding-with-the-Installation.html
 [5]: https://guix.gnu.org/en/manual/en/html_node/After-System-Installation.html#After-System-Installation
+[6]: https://guix.gnu.org/manual/devel/en/html_node/Home-Configuration.html
