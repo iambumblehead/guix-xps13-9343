@@ -64,7 +64,8 @@ Setup root and not-root users to run guix pull and reconfigure, [as recommended 
 passwd # root
 passwd <your username> # non-root
 cp /home/channels.scm > ~/.config/guix/channels.scm
-exit # logout and back in
+exit # logout and back in, as non-root
+cp /home/channels.scm > ~/.config/guix/channels.scm
 guix pull
 sudo guix system reconfigure /etc/config.scm
 ```
