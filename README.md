@@ -63,12 +63,34 @@ Setup root and not-root users to run guix pull and reconfigure, [as recommended 
 ```console
 passwd # root
 passwd <your username> # non-root
-cp /home/channels.scm ~/.config/guix/channels.scm
-exit # logout and back in, as non-root
-cp /home/channels.scm ~/.config/guix/channels.scm
+```
+
+Logout and back in, as non-root. First guix pull,
+```console
+exit
+mkdir -p ~/.config/guix
+wget https://raw.githubusercontent.com/iambumblehead \
+  /guix-xps13-9343/main/.config/guix/channels.scm
+cp /etc/channels.scm ~/.config/guix/channels.scm
+guix pull
+guix describe # lists a single channel --guix. Not what we want.
+```
+
+Update *~/.bash_profile* in the following way. Logout and back in, non-root,
+```bash
+export GUIX_PROFILE=$HOME/.config/guix/current
+. $GUIX_PROFILE/etc/profile
+export GUIX_PROFILE=$HOME/.guix-profile
+. $GUIX_PROFILE/etc/profile
+```
+
+Now any time pull or reconfigure as non-root, [as recommended by gnu,][5]
+```console
+guix describe # now lists multiple channels, incl. guix and nonguix
 guix pull
 sudo guix system reconfigure /etc/config.scm
 ```
+
 
 [0]: https://github.com/SystemCrafters/guix-installer/releases/latest
 [1]: https://wiki.systemcrafters.cc/guix/nonguix-installation-guide
