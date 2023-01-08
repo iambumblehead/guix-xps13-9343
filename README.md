@@ -21,7 +21,7 @@ network={
 ```
 
 Boot from the iso. Select locale, language and shell install option. Setup a network connection.
-```console
+```shell
 rfkill unblock all
 ifconfig -a # list networking devices
 wpa_supplicant -c wifi.conf -i wlan0 -B
@@ -29,7 +29,7 @@ dhclient -v wlan0
 ```
 
 Format and label "root" and "swap". Mount them. The config will mount root using the label, rather than UUID. (todo: investigate if this can be done with swap as well)
-```console
+```shell
 mkfs.ext4 -L my-root /dev/sda3
 mount LABEL=my-root /mnt
 mkdir -p /mnt/boot/efi
@@ -40,7 +40,7 @@ mkdir -p /mnt/home
 ```
 
 Begin installation, pulling non-free channels.
-```console
+```shell
 herd start cow-store /mnt
 git clone https://github.com/iambumblehead/guix-xps13-9343
 mkdir -p ~/.config/guix
@@ -50,7 +50,7 @@ hash guix
 ```
 
 Install the config-bare.scm small environment with operational wifi and emacs  [gnu manual][4]
-```console
+```shell
 mkdir /mnt/etc
 cp guix-xps13-9343/config-bare.scm /mnt/etc/config.scm
 emacs -nw /mnt/etc/config.scm # edit root mount point uuid
@@ -59,14 +59,14 @@ cp /etc/channels.scm /mnt/home/
 reboot
 ```
 
-Setup root and not-root users to run guix pull and reconfigure, [as recommended by gnu,][5]
-```console
+Setup root and not-root users [as recommended by gnu,][5]
+```shell
 passwd # root
 passwd <your username> # non-root
 ```
 
 Logout and back in, as non-root. First guix pull,
-```console
+```shell
 exit
 mkdir -p ~/.config/guix
 wget https://raw.githubusercontent.com/iambumblehead \
@@ -76,7 +76,7 @@ guix pull
 guix describe # lists a single channel --guix. Not what we want.
 ```
 
-Update *~/.bash_profile* in the following way. Logout and back in, non-root,
+Add `GUIX_PROFILE` to *~/.bash_profile* then logout and back in as non-root,
 ```bash
 export GUIX_PROFILE=$HOME/.config/guix/current
 . $GUIX_PROFILE/etc/profile
@@ -84,8 +84,8 @@ export GUIX_PROFILE=$HOME/.guix-profile
 . $GUIX_PROFILE/etc/profile
 ```
 
-Now any time pull or reconfigure as non-root, [as recommended by gnu,][5]
-```console
+Now pull or reconfigure as non-root anytime [as recommended by gnu,][5]
+```shell
 guix describe # now lists multiple channels, incl. guix and nonguix
 guix pull
 sudo guix system reconfigure /etc/config.scm
