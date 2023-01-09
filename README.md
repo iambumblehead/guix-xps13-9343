@@ -80,8 +80,6 @@ Add `GUIX_PROFILE` to *~/.bash_profile* then logout and back in as non-root,
 ```bash
 export GUIX_PROFILE=$HOME/.config/guix/current
 . $GUIX_PROFILE/etc/profile
-export GUIX_PROFILE=$HOME/.guix-profile
-. $GUIX_PROFILE/etc/profile
 ```
 
 Now pull or reconfigure as non-root anytime [as recommended by gnu,][5]
