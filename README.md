@@ -90,6 +90,9 @@ sudo guix system reconfigure /etc/config.scm
 ```
 
 
+<!-- cat ~/some_file.txt | nc termbin.com 9999 -->
+
+
 [0]: https://github.com/SystemCrafters/guix-installer/releases/latest
 [1]: https://wiki.systemcrafters.cc/guix/nonguix-installation-guide
 [2]: https://github.com/daviwil/
