@@ -69,7 +69,6 @@
   (packages (append (list
                      screen emacs
 		     sway
-		     foot
                      ;; for HTTPS access
                      nss-certs)
                     %base-packages))  
